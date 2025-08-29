@@ -1,0 +1,15 @@
+{% extends "../base.html" %}
+{% load static %}
+
+{% block title %}Página Inicial - Receitas{% endblock %}
+
+{% block content %}
+  <h2>Bem-vindo ao nosso site de receitas!</h2>
+  <p>Aqui você encontrará as melhores receitas para todos os momentos. Explore nossas categorias ou use a barra de pesquisa para encontrar a sua próxima receita favorita.</p>
+  
+  <div class="receitas-list">
+    <h3>Receitas em Destaque</h3>
+     <p> Adicione a sua receita! <a href="{% url 'inserirreceita' %}">Clique aqui</a>.</p>
+     <p> Vá atrás das melhores receitas! <a href="{% url 'procurar' %}">Procurar receita</a>.</p>
+  </div>
+{% endblock %}
