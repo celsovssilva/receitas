@@ -33,3 +33,7 @@ def procurar(request):
     else:    
         receitas= Receita.objects.all()
     return render(request, 'recipe/procurar.html', {'receitas': receitas})
+
+def recipe(request, pk):
+    receita = Receita.objects.get(pk=pk)
+    return render(request, 'recipe/recipe_detail.html', {'receita': receita})

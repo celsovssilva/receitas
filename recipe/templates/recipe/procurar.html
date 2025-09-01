@@ -8,7 +8,7 @@
   <div class="container">
     <h2>Pesquisar Receitas</h2>
 
-    <form action="{% url 'search_results' %}" method="get" class="search-form">
+    <form action="{% url 'procurar' %}" method="get" class="search-form">
       <input type="text" name="q" placeholder="Buscar por nome da receita..." value="{{ query|default:'' }}">
       <button type="submit">Pesquisar</button>
     </form>
@@ -18,15 +18,18 @@
         <p>Resultados para: <strong>"{{ query }}"</strong></p>
     {% endif %}
 
-    {% if recipes %}
+    {% if receitas %}
          <h3>Receitas Encontradas:</h3>
       <div class="receitas-list">
-        {% for recipes in recipes %}
+        {% for receita in receitas %}
             <div class="receita-card">
-            <h4><a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.name }}</a></h4>
-            <p>Tempo de Preparo: {{ recipe.preparationtime }} minutos</p>
+            <h4><a href="{% url 'recipe_detail' receita.pk %}">{{ receita.name }}</a></h4>
+            <p>Tempo de Preparo: {{ receita.preparationtime }} minutos</p>
             </div>
         {% endfor %}
+
+        {% endif %}
+        {% endblock %}
       </div>
       
 

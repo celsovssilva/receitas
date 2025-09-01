@@ -21,4 +21,5 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('inserirreceita/', views.inserir, name='inserirreceita'),
     path('procurar/', views.procurar, name='procurar'),
+    path('receita/<int:pk>/', views.recipe, name='recipe_detail'),
 ]

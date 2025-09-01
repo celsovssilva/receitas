@@ -1,0 +1,17 @@
+{% extends "../base.html" %}
+
+{% block title %}{{ receita.name }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ receita.name }}</h1>
+        <p>Tempo de Preparo: {{ receita.preparationtime }} minutos</p>
+        
+        <h3>Ingredientes</h3>
+        <p>{{ receita.ingredients }}</p>
+        
+        <h3>Modo de Preparo</h3>
+        <p>{{ receita.preparationmethod }}</p>
+
+        </div>
+{% endblock %}
