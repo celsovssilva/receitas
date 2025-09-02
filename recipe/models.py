@@ -6,6 +6,9 @@ class Receita(models.Model):
     ingredients= models.TextField()
     preparationmethod=models.TextField()
     preparationtime=models.IntegerField()
+    fotos= models.ImageField(upload_to='receitasfotos/', blank=True, null=True)
+
+   
    
 
     def __str__(self):

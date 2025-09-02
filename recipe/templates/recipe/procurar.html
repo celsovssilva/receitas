@@ -19,17 +19,22 @@
     {% endif %}
 
     {% if receitas %}
-         <h3>Receitas Encontradas:</h3>
+      <h3>Receitas Encontradas:</h3>
       <div class="receitas-list">
         {% for receita in receitas %}
             <div class="receita-card">
-            <h4><a href="{% url 'recipe_detail' receita.pk %}">{{ receita.name }}</a></h4>
+            <h4><a href="{% url 'detalhesdareceita' receita.pk %}">{{ receita.name }}</a></h4>
             <p>Tempo de Preparo: {{ receita.preparationtime }} minutos</p>
+            {% if receita.fotos %}
+              <img src="{{ receita.fotos.url }}" alt="{{ receita.name }}" class="receita-foto">
+            {% else %}
+              <p><em>Sem foto disponível</em></p>
+            {% endif %}
             </div>
         {% endfor %}
-
-        {% endif %}
-        {% endblock %}
       </div>
-      
+    {% endif %}
+
+  </div>
+{% endblock %}
 

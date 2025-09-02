@@ -5,28 +5,9 @@
 {% block content %}
   <h2>Adicionar Nova Receita</h2>
   
-  <form method="post">
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <div>
-      <label for="nome">Nome da Receita:</label>
-      <input type="text" id="nome" name="name" required>
-    </div>
-    
-    <div>
-      <label for="ingredientes">Ingredientes:</label>
-      <textarea id="ingredientes" name="ingredients" rows="5" required></textarea>
-    </div>
-    
-    <div>
-      <label for="modo_de_preparo">Modo de Preparo:</label>
-      <textarea id="modo_de_preparo" name="preparationmethod" rows="10" required></textarea>
-    </div>
-    
-   <div>
-  <label for="tempo_de_preparo">Tempo de Preparo (minutos):</label>
-  <input type="number" id="tempo_de_preparo" name="preparationtime" required>
-</div>
-    
+    {{ form.as_p }}
     <button type="submit">Salvar Receita</button>
   </form>
 {% endblock %}
