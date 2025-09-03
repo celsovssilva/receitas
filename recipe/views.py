@@ -2,6 +2,8 @@ from django.shortcuts import render
 from .models import Receita
 from django.shortcuts import redirect
 from .forms import ReceitaForm
+
+
 # Create your views here.
 def home(request):
     return render(request, 'recipe/home.html')
@@ -9,6 +11,7 @@ def home(request):
 
 def inserir(request):
     if request.method == 'POST':
+       form= ReceitaForm(request.POST, request.FILES)
        if form.is_valid():
            form.save()
            return redirect('home')
@@ -32,3 +35,5 @@ def procurar(request):
 def recipe(request, pk):
     receita = Receita.objects.get(pk=pk)
     return render(request, 'recipe/receita.html', {'receita': receita})
+
+

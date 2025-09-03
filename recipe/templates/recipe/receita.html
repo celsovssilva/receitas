@@ -13,5 +13,12 @@
         <h3>Modo de Preparo</h3>
         <p>{{ receita.preparationmethod }}</p>
 
+        {% if receita.fotos %}
+            <div class="foto-container">
+                <img src="{{ receita.fotos.url }}" alt="{{ receita.name }}" class="receita-foto-detalhe">
+            </div>
+        {% else %}
+            <p><em>Sem foto disponível</em></p>
+        {% endif %}
         </div>
 {% endblock %}
