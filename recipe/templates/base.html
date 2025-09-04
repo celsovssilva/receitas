@@ -6,24 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>{% block title %}Receitas{% endblock %}</title>
-    </head>
+  </head>
   <body>
     <header>
-      <h1> Receitas WEB</h1>
+      <h1>Receitas WEB</h1>
       <nav>
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/sobre">Sobre</a></li>
-          </ul>
+          {% if user.is_authenticated %}
+            <li><a href="/">Home</a></li>
+            <li><a href="/sobre">Sobre</a></li>
+           
+          {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Registrar</a></li>
+          {% endif %}
+        </ul>
       </nav>
     </header>
-
+ <li>
+              <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="logout-btn">Sair</button>
+              </form>
+            </li>
     <main>
       {% block content %}
-        {% endblock %}
+      {% endblock %}
     </main>
-
-   
-
-    </body>
+  </body>
 </html>
