@@ -13,6 +13,7 @@
         <h3>Modo de Preparo</h3>
         <p>{{ receita.preparationmethod }}</p>
 
+         
         {% if receita.fotos %}
             <div class="foto-container">
                 <img src="{{ receita.fotos.url }}" alt="{{ receita.name }}" class="receita-foto-detalhe">
@@ -20,5 +21,20 @@
         {% else %}
             <p><em>Sem foto disponível</em></p>
         {% endif %}
+        
+        <hr>
+        <div class="vote-section">
+            <form action="{% url 'like_receita' receita.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="like">
+                <button type="submit">Gostei ({{ receita.like }})</button>
+            </form>
+            
+            <form action="{% url 'like_receita' receita.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="deslike">
+                <button type="submit">Não Gostei ({{ receita.deslike }})</button>
+            </form>
         </div>
+    </div>
 {% endblock %}

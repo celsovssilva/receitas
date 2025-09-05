@@ -8,6 +8,9 @@ class Receita(models.Model):
     preparationtime=models.IntegerField()
     fotos= models.ImageField(upload_to='receitasfotos/', blank=True, null=True)
 
+    like = models.IntegerField(default=0)
+    deslike = models.IntegerField(default=0)
+
    
    
 

@@ -108,3 +108,9 @@ button[type="submit"]:hover {
       cursor: pointer;
     }
   
+.receita-foto-detalhe {
+    width: 300px !important;
+    height: 200px !important; 
+    object-fit: cover !important;
+    object-position: center !important;
+}

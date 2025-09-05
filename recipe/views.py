@@ -3,6 +3,7 @@ from .models import Receita
 from django.shortcuts import redirect
 from .forms import ReceitaForm
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
 
 
 # Create your views here.
@@ -37,5 +38,19 @@ def procurar(request):
 def recipe(request, pk):
     receita = Receita.objects.get(pk=pk)
     return render(request, 'recipe/receita.html', {'receita': receita})
+
+@login_required
+def like_receita(request, pk):
+    receita = get_object_or_404(Receita, pk=pk)
+    if request.method == 'POST':
+        action = request.POST.get('action')
+        if action == 'like':
+            receita.like += 1
+          
+        elif action == 'deslike':
+            receita.deslike += 1
+            
+        receita.save()
+    return redirect('detalhesdareceita', pk=pk)
 
 
