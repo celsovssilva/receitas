@@ -1,40 +1,28 @@
-{% extends "../base.html" %}
-
-{% load static %}
-
-{% block title %}Resultados da Pesquisa{% endblock %}
-
+{% extends "base.html" %}
+{% block title %}Explorar receitas · Mesa & Memória{% endblock %}
 {% block content %}
-  <div class="container">
-    <h2>Pesquisar Receitas</h2>
-
-    <form action="{% url 'procurar' %}" method="get" class="search-form">
-      <input type="text" name="q" placeholder="Buscar por nome da receita..." value="{{ query|default:'' }}">
-      <button type="submit">Pesquisar</button>
-    </form>
-    <hr>
-
-    {% if query %}
-        <p>Resultados para: <strong>"{{ query }}"</strong></p>
-    {% endif %}
-
-    {% if receitas %}
-      <h3>Receitas Encontradas:</h3>
-      <div class="receitas-list">
-        {% for receita in receitas %}
-            <div class="receita-card">
-            <h4><a href="{% url 'detalhesdareceita' receita.pk %}">{{ receita.name }}</a></h4>
-            <p>Tempo de Preparo: {{ receita.preparationtime }} minutos</p>
-            {% if receita.fotos %}
-              <img src="{{ receita.fotos.url }}" alt="{{ receita.name }}" class="receita-foto">
-            {% else %}
-              <p><em>Sem foto disponível</em></p>
-            {% endif %}
+<h1 class="page-title">Explorar receitas</h1>
+<p class="page-intro">Encontre aquele prato especial para hoje.</p>
+<form action="{% url 'procurar' %}" method="get" class="search-bar"><input type="text" name="q"
+        placeholder="Buscar pelo nome da receita..." value="{{ query|default:'' }}"><button
+        class="button button-primary" type="submit">Pesquisar</button></form>
+{% if query %}<div class="section-heading">
+    <div>
+        <h2>Resultados para “{{ query }}”</h2>
+    </div>
+</div>{% endif %}
+{% if receitas %}<div class="receitas-list">{% for receita in receitas %}<article class="receita-card"><a
+            href="{% url 'detalhesdareceita' receita.pk %}">
+            <div class="receita-card-media">{% if receita.fotos %}<img src="{{ receita.fotos.url }}"
+                    alt="{{ receita.name }}">{% else %}🍽️{% endif %}</div>
+            <div class="receita-card-body">
+                <h3>{{ receita.name }}</h3>
+                <p>⏱ {{ receita.preparationtime }} minutos</p>
             </div>
-        {% endfor %}
-      </div>
-    {% endif %}
-
-  </div>
+        </a></article>{% endfor %}</div>{% elif query %}<div class="empty-state">
+    <div style="font-size:3rem">🍳</div>
+    <h3>Nada encontrado ainda</h3>
+    <p>Tente buscar por outro nome ou cadastre uma nova receita.</p><a class="button button-primary"
+        href="{% url 'inserirreceita' %}">Cadastrar receita</a>
+</div>{% endif %}
 {% endblock %}
-

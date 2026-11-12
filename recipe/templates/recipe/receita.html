@@ -1,40 +1,25 @@
-{% extends "../base.html" %}
-
-{% block title %}{{ receita.name }}{% endblock %}
-
+{% extends "base.html" %}
+{% block title %}{{ receita.name }} · Mesa & Memória{% endblock %}
 {% block content %}
-    <div class="container">
-        <h1>{{ receita.name }}</h1>
-        <p>Tempo de Preparo: {{ receita.preparationtime }} minutos</p>
-        
-        <h3>Ingredientes</h3>
-        <p>{{ receita.ingredients }}</p>
-        
-        <h3>Modo de Preparo</h3>
-        <p>{{ receita.preparationmethod }}</p>
-
-         
-        {% if receita.fotos %}
-            <div class="foto-container">
-                <img src="{{ receita.fotos.url }}" alt="{{ receita.name }}" class="receita-foto-detalhe">
-            </div>
-        {% else %}
-            <p><em>Sem foto disponível</em></p>
-        {% endif %}
-        
-        <hr>
-        <div class="vote-section">
-            <form action="{% url 'like_receita' receita.id %}" method="post" style="display:inline;">
-                {% csrf_token %}
-                <input type="hidden" name="action" value="like">
-                <button type="submit">Gostei ({{ receita.like }})</button>
-            </form>
-            
-            <form action="{% url 'like_receita' receita.id %}" method="post" style="display:inline;">
-                {% csrf_token %}
-                <input type="hidden" name="action" value="deslike">
-                <button type="submit">Não Gostei ({{ receita.deslike }})</button>
-            </form>
-        </div>
+<div class="panel">
+    <p class="eyebrow">Receita da comunidade</p>
+    <h1>{{ receita.name }}</h1>
+    <p>⏱ Tempo de preparo: {{ receita.preparationtime }} minutos</p>
+    <h3>Ingredientes</h3>
+    <p>{{ receita.ingredients }}</p>
+    <h3>Modo de preparo</h3>
+    <p>{{ receita.preparationmethod }}</p>
+    {% if receita.fotos %}<div class="receita-card-media" style="border-radius:15px;margin:25px 0"><img
+            src="{{ receita.fotos.url }}" alt="{{ receita.name }}"></div>{% else %}<p><em>Sem foto disponível</em></p>{%
+    endif %}
+    <hr>
+    <div class="vote-section">
+        <form action="{% url 'like_receita' receita.id %}" method="post" style="display:inline-block;margin-right:8px">
+            {% csrf_token %}<input type="hidden" name="action" value="like"><button class="button button-primary"
+                type="submit">Gostei ({{ receita.like }})</button></form>
+        <form action="{% url 'like_receita' receita.id %}" method="post" style="display:inline-block">{% csrf_token
+            %}<input type="hidden" name="action" value="deslike"><button class="button button-secondary"
+                type="submit">Não gostei ({{ receita.deslike }})</button></form>
     </div>
+</div>
 {% endblock %}

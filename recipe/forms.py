@@ -1,7 +1,5 @@
 from django import forms
-from .models import Receita
 
-from django import forms
 from .models import Receita
 
 class ReceitaForm(forms.ModelForm):
