@@ -1,0 +1,28 @@
+# Anotações do Django & API
+
+## 1. Comandos Principais no Terminal
+- `python manage.py runserver` -> Roda o site localmente
+- `python manage.py makemigrations` -> Prepara as mudanças do banco
+- `python manage.py migrate` -> Aplica as mudanças no banco de dados
+- `python manage.py createsuperuser` -> Cria conta de admin
+- `python manage.py import_receitas` -> Roda o nosso script da API
+
+
+## 2. O que cada peça faz no Django
+- **models.py**: Define as tabelas e os campos do banco de dados.
+- **views.py**: A lógica de negócio (o que acontece quando acessam uma página).
+- **urls.py**: Os caminhos/rotas do site.
+- **management/commands/**: Pasta especial para criar comandos próprios de terminal.
+
+
+## 3. Comandos de Saída e Estilo no Terminal
+- `self.stdout.write()`: Imprime o texto no terminal.
+- `self.style.SUCCESS('texto')`: Pinta o texto de VERDE.
+- `self.style.ERROR('texto')`: Pinta o texto de VERMELHO.
+- `self.style.WARNING('texto')`: Pinta o texto de AMARELO.
+
+ex: self.stdout.write(self.style.WARNING("Iniciando conexao com a API..."))
+
+## 4. Dados da API (TheMealDB)
+- **URL da API**: `https://www.themealdb.com/api/json/v1/1/search.php?s=`
+- **O que ela devolve**: Um JSON com a chave `'meals'`, que contém a lista de receitas.

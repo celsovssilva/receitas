@@ -1,0 +1,21 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1f5c4a">
+    <link rel="stylesheet" href="{% static 'recipe/css/style.css' %}">
+    <title>{% block title %}Mesa & Memória{% endblock %}</title>
+  </head>
+  <body>
+    <div class="loading-screen" id="loading-screen"><div class="loader" aria-label="Carregando"></div></div>
+    <header class="site-header"><div class="nav-shell">
+      <a class="brand" href="{% url 'home' %}"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3v7M4 3v4a3 3 0 0 0 6 0V3M7 10v11M16 3v18M16 3c3 2 3 7 0 9" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Mesa <em>&</em> Memória</span></a>
+      <nav class="main-nav">{% if user.is_authenticated %}<a href="{% url 'home' %}">Início</a><a href="{% url 'procurar' %}">Explorar</a><a href="{% url 'inserirreceita' %}">Criar receita</a><div class="user-actions"><span class="avatar">{{ user.username|first|upper }}</span><form class="logout-form" action="{% url 'logout' %}" method="post">{% csrf_token %}<button type="submit" class="logout-btn">Sair</button></form></div>{% else %}<a href="{% url 'login' %}">Entrar</a><a class="button button-primary" href="{% url 'register' %}">Criar conta</a>{% endif %}</nav>
+    </div></header>
+    <main class="page-shell">{% block content %}{% endblock %}</main>
+    <footer class="site-footer">Feito para receitas que merecem ser lembradas.</footer>
+    <script>window.addEventListener('load',function(){document.getElementById('loading-screen').classList.add('is-hidden')});</script>
+  </body>
+</html>

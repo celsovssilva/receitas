@@ -1,12 +1,8 @@
-{% extends "../base.html" %}
-{% load static %}
-{% block title %}Cadastro{% endblock %}
-
+{% extends "base.html" %}
+{% block title %}Criar conta · Mesa & Memória{% endblock %}
 {% block content %}
-    <h2>Login</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Cadastrar</button>
-    </form>
-    {% endblock %}
+<div class="auth-wrap"><div class="panel"><p class="eyebrow">Comece seu repertório</p><h1>Crie sua conta</h1><p>Salve receitas, descubra sabores e cozinhe com memória.</p>
+{% if form.errors %}<div class="form-alert"><strong>Confira os dados abaixo:</strong></div>{% endif %}
+<form method="post" novalidate>{% csrf_token %}{{ form.as_p }}<button class="button button-primary" type="submit">Criar minha conta</button></form>
+<p class="password-tip">A senha precisa ter pelo menos 8 caracteres, não pode ser muito comum nem formada apenas por números.</p><p class="auth-link">Já tem uma conta? <a href="{% url 'login' %}">Entre aqui</a></p></div></div>
+{% endblock %}

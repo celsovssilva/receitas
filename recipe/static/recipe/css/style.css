@@ -1,0 +1,634 @@
+/* Arquivos estáticos da aplicação de receitas. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
+
+:root {
+    --ink: #1f2933;
+    --muted: #697586;
+    --cream: #fffaf3;
+    --paper: #fff;
+    --line: #eadfd2;
+    --green: #1f5c4a;
+    --green-dark: #153f34;
+    --orange: #e8793e;
+    --gold: #f5b544;
+    --shadow: 0 18px 45px rgba(38, 31, 24, .1)
+}
+
+* {
+    box-sizing: border-box
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6
+}
+
+a {
+    color: inherit;
+    text-decoration: none
+}
+
+button,
+input,
+textarea {
+    font: inherit
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(255, 250, 243, .92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(234, 223, 210, .7)
+}
+
+.nav-shell {
+    width: min(1160px, calc(100% - 40px));
+    height: 76px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    color: var(--green-dark);
+    font-weight: 800;
+    letter-spacing: -.04em;
+    font-size: 1.28rem
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    background: var(--green);
+    border-radius: 14px 14px 14px 4px;
+    box-shadow: 0 8px 18px rgba(31, 92, 74, .22)
+}
+
+.brand-mark svg {
+    width: 25px
+}
+
+.brand em {
+    color: var(--orange);
+    font-style: normal
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px
+}
+
+.main-nav a,
+.logout-btn {
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .2s
+}
+
+.main-nav a:hover,
+.logout-btn:hover {
+    color: var(--green);
+    background: #eef5ef
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+.logout-form {
+    margin: 0;
+    padding: 0;
+    background: none;
+    box-shadow: none
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #f8dfbd;
+    color: #8a4c23;
+    font-weight: 800
+}
+
+.page-shell {
+    width: min(1160px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 54px 0 90px;
+    min-height: calc(100vh - 76px)
+}
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    min-height: 430px;
+    align-items: center;
+    padding: 62px 70px;
+    border-radius: 32px;
+    color: #fff;
+    background: var(--green);
+    box-shadow: var(--shadow)
+}
+
+.hero:after {
+    content: '';
+    position: absolute;
+    width: 390px;
+    height: 390px;
+    right: -120px;
+    top: -150px;
+    border: 2px solid rgba(255, 255, 255, .12);
+    border-radius: 50%;
+    box-shadow: 0 0 0 35px rgba(255, 255, 255, .04), 0 0 0 70px rgba(255, 255, 255, .03)
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 600px
+}
+
+.eyebrow {
+    margin: 0 0 14px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    font-size: .75rem;
+    font-weight: 800
+}
+
+h1,
+h2,
+h3,
+h4 {
+    line-height: 1.15;
+    letter-spacing: -.035em
+}
+
+.hero h1 {
+    max-width: 650px;
+    margin: 0 0 20px;
+    font: 800 clamp(2.7rem, 5vw, 4.65rem)/1.02 'Playfair Display', serif
+}
+
+.hero p {
+    max-width: 530px;
+    margin: 0 0 30px;
+    color: #d8e8df;
+    font-size: 1.08rem
+}
+
+.hero-plate {
+    position: relative;
+    z-index: 1;
+    justify-self: end;
+    width: 250px;
+    height: 250px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, .2);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .08);
+    box-shadow: inset 0 0 0 16px rgba(255, 255, 255, .05);
+    font-size: 7rem;
+    transform: rotate(-8deg);
+    animation: float 5s ease-in-out infinite
+}
+
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 9px;
+    border: 0;
+    border-radius: 12px;
+    padding: 13px 19px;
+    cursor: pointer;
+    font-weight: 800;
+    transition: transform .2s, box-shadow .2s, background .2s
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .12)
+}
+
+.button-primary {
+    color: #fff;
+    background: var(--orange)
+}
+
+.button-secondary {
+    color: var(--green);
+    background: #fff
+}
+
+.section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 56px 0 22px
+}
+
+.section-heading h2 {
+    margin: 0;
+    font: 700 2rem 'Playfair Display', serif
+}
+
+.section-heading p {
+    margin: 6px 0 0;
+    color: var(--muted)
+}
+
+.feature-grid,
+.receitas-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px
+}
+
+.feature-card,
+.receita-card,
+.panel {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(38, 31, 24, .05)
+}
+
+.feature-card {
+    padding: 25px;
+    transition: .25s
+}
+
+.feature-card:hover,
+.receita-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow)
+}
+
+.feature-icon {
+    width: 45px;
+    height: 45px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: #fce8d9;
+    font-size: 1.35rem
+}
+
+.feature-card h3 {
+    margin: 18px 0 7px
+}
+
+.feature-card p {
+    margin: 0;
+    color: var(--muted)
+}
+
+.page-title {
+    margin: 0 0 8px;
+    font: 700 clamp(2.2rem, 4vw, 3.4rem) 'Playfair Display', serif
+}
+
+.page-intro {
+    margin: 0 0 34px;
+    color: var(--muted)
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+    padding: 8px;
+    margin-bottom: 32px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(38, 31, 24, .05)
+}
+
+.search-bar input {
+    min-width: 0;
+    flex: 1;
+    border: 0;
+    outline: 0;
+    padding: 12px 14px;
+    background: transparent
+}
+
+.search-bar button {
+    padding: 12px 20px
+}
+
+.receita-card {
+    overflow: hidden;
+    transition: .25s
+}
+
+.receita-card-media {
+    height: 190px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #f8eadb, #f1d2b3);
+    color: #9b6a45;
+    font-size: 4rem
+}
+
+.receita-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover
+}
+
+.receita-card-body {
+    padding: 20px
+}
+
+.receita-card h3 {
+    margin: 0 0 8px;
+    font-size: 1.12rem
+}
+
+.receita-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: .9rem
+}
+
+.empty-state {
+    padding: 55px 25px;
+    text-align: center;
+    background: #fff;
+    border: 1px dashed #d9c5b2;
+    border-radius: 20px;
+    color: var(--muted)
+}
+
+.panel {
+    max-width: 760px;
+    margin: auto;
+    padding: 34px
+}
+
+.panel h1 {
+    margin-top: 0;
+    font: 700 2.3rem 'Playfair Display', serif
+}
+
+.panel>p {
+    color: var(--muted)
+}
+
+.auth-wrap {
+    max-width: 480px;
+    margin: 22px auto
+}
+
+.auth-wrap .panel {
+    text-align: center
+}
+
+.auth-wrap form {
+    text-align: left
+}
+
+.auth-wrap .button {
+    width: 100%;
+    margin-top: 8px
+}
+
+.auth-link {
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: .92rem
+}
+
+.auth-link a {
+    color: var(--green);
+    font-weight: 800
+}
+
+.form-alert {
+    margin: 18px 0;
+    padding: 12px 14px;
+    border: 1px solid #efb7a5;
+    border-radius: 10px;
+    color: #9a3d28;
+    background: #fff1ed;
+    text-align: left
+}
+
+.errorlist {
+    margin: 6px 0 0;
+    padding: 0;
+    list-style: none;
+    color: #b44a32;
+    font-size: .82rem;
+    text-align: left
+}
+
+.password-tip {
+    margin: 18px 0 0;
+    color: var(--muted);
+    font-size: .78rem;
+    line-height: 1.5
+}
+
+form:not(.logout-form) {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none
+}
+
+form p {
+    margin: 0 0 18px
+}
+
+form label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--ink);
+    font-size: .9rem;
+    font-weight: 700
+}
+
+form input:not([type=checkbox]),
+form textarea,
+form select {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    outline: 0;
+    padding: 12px 14px;
+    color: var(--ink);
+    background: #fffdfb;
+    transition: .2s
+}
+
+form textarea {
+    min-height: 130px;
+    resize: vertical
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 4px rgba(31, 92, 74, .1)
+}
+
+.site-footer {
+    padding: 30px 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: .88rem;
+    border-top: 1px solid var(--line)
+}
+
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    display: grid;
+    place-items: center;
+    background: var(--cream);
+    transition: opacity .45s, visibility .45s
+}
+
+.loading-screen.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 4px solid #dce9df;
+    border-top-color: var(--orange);
+    border-radius: 50%;
+    animation: spin .8s linear infinite
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: rotate(-8deg) translateY(0)
+    }
+
+    50% {
+        transform: rotate(-5deg) translateY(-12px)
+    }
+}
+
+@media(max-width:800px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 42px 30px
+    }
+
+    .hero-plate {
+        display: none
+    }
+
+    .feature-grid,
+    .receitas-list {
+        grid-template-columns: 1fr 1fr
+    }
+
+    .main-nav a {
+        padding: 8px
+    }
+
+    .brand span {
+        display: none
+    }
+}
+
+@media(max-width:560px) {
+
+    .nav-shell,
+    .page-shell {
+        width: calc(100% - 28px)
+    }
+
+    .nav-shell {
+        gap: 8px
+    }
+
+    .main-nav {
+        gap: 0
+    }
+
+    .main-nav a {
+        font-size: .82rem;
+        padding: 8px 6px
+    }
+
+    .user-actions .avatar {
+        display: none
+    }
+
+    .hero {
+        border-radius: 22px;
+        padding: 36px 24px
+    }
+
+    .hero h1 {
+        font-size: 2.7rem
+    }
+
+    .feature-grid,
+    .receitas-list {
+        grid-template-columns: 1fr
+    }
+
+    .search-bar {
+        flex-direction: column
+    }
+
+    .search-bar button {
+        width: 100%
+    }
+
+    .panel {
+        padding: 24px 20px
+    }
+}
